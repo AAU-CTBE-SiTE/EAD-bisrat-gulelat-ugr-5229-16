@@ -1,10 +1,9 @@
-# Lab 1: Java Maven Starter Project
+Lab 2: JPA CRUD Operations
 
-- Establish a connection between Java and MySQL
-- Create the StudentsDB database
-- Create a students table with id, firstname, lastname, and grade columns
-- Insert student records into the students table
-- Retrieve student records from the database
-- Update student information
-- Delete student records from the database
-- Calculate the average grade of students
+- Configure JPA and Hibernate to connect Java to MySQL
+- Create the jpadb1 database
+- Create a Student entity to represent student records
+- Insert student records into the database
+- Retrieve a student record by ID
+- Update a student's technology
+- Delete a student record and verify deletion
