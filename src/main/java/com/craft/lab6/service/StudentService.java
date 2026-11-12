@@ -1,10 +1,13 @@
+
 package com.craft.lab6.service;
 
+import com.craft.lab6.aspect.TrackExecutionTime;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StudentService {
 
+    @TrackExecutionTime
     public String addStudent(String name) {
         System.out.println("Adding student: " + name);
         return name + " added successfully";
@@ -21,5 +24,14 @@ public class StudentService {
 
     public void failOperation() {
         throw new RuntimeException("Student operation failed!");
+    }
+
+    public void processStudent(String name) {
+        System.out.println("Processing student: " + name);
+    }
+
+    // Demonstrates self-invocation
+    public void internalStudentOperation() {
+        processStudent("Internal Student");
     }
 }

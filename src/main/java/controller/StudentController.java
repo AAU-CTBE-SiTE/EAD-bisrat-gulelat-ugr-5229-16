@@ -1,6 +1,8 @@
+
 package com.craft.lab6.controller;
 
 import com.craft.lab6.service.StudentService;
+import com.craft.lab6.service.StudentReportService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -8,9 +10,13 @@ import org.springframework.web.bind.annotation.*;
 public class StudentController {
 
     private final StudentService studentService;
+    private final StudentReportService studentReportService;
 
-    public StudentController(StudentService studentService) {
+    public StudentController(
+            StudentService studentService,
+            StudentReportService studentReportService) {
         this.studentService = studentService;
+        this.studentReportService = studentReportService;
     }
 
     @PostMapping("/{name}")
@@ -33,5 +39,23 @@ public class StudentController {
     public String testError() {
         studentService.failOperation();
         return "Completed";
+    }
+
+    @GetMapping("/process/{name}")
+    public String processStudent(@PathVariable String name) {
+        studentService.processStudent(name);
+        return "Student processed";
+    }
+
+    @GetMapping("/internal")
+    public String internalOperation() {
+        studentService.internalStudentOperation();
+        return "Internal operation completed";
+    }
+
+    @GetMapping("/report")
+    public String generateReport() {
+        studentReportService.generateReport();
+        return "Report generated";
     }
 }
